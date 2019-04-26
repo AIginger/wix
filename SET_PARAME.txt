@@ -1,0 +1,92 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 25 15:56:11 2019
+
+@author: HaiyanJiang
+@email : jianghaiyan.cn@gmail.com
+
+"""
+
+s_dtype = {
+    'RESULT1_ID': str,
+    'ATE_ID': str,
+    'JOB_NUM': str,
+    'TEST_DATE': str,
+    'START_DATETIME': str,
+    'STOP_DATETIME': str,
+    'R1_RESULT': float,
+    'TPS_ID': str,
+    'SERIAL_NUMBER': str,
+    'TEST_NUM': float,
+    'CM_NAME': str,
+    'WORK_ORDER': str,
+    'POSITION': str,
+    'STATION_NAME': str,
+    'UUT_NAME': str,
+    'RESULT2_ID': str,
+    'FT_TEST_ITEM_ID': str,
+    'R2_FT_TEST_ITEM_NAME': str,
+    'START_DATETIME.1': str,
+    'STOP_DATETIME.1': str,
+    'R2_RESULT': float,
+    # 'RESULT_DESC': str,
+    'UPPER_LIMIT': float,
+    'LOWER_LIMIT': float,
+    'SERIAL_NUMBER.1': str,
+    'RESULT3_ID': str,
+    'FT_TEST_ITEM_ID.1': str,
+    'R3_FT_TEST_ITEM_NAME': str,
+    'R3_RESULT': float,
+    # 'RESULT_DESC.1': str,
+    'UPPER_LIMIT.1': float,
+    'LOWER_LIMIT.1': float}
+
+sel_names = [
+    'ATE_ID', 'JOB_NUM', 'TEST_DATE', 'TPS_ID', 'SERIAL_NUMBER',
+    'TEST_NUM', 'CM_NAME', 'WORK_ORDER', 'STATION_NAME', 'UUT_NAME',
+    'R2_FT_TEST_ITEM_NAME', 'R3_FT_TEST_ITEM_NAME', 'R3_RESULT',
+    'RESULT_DESC.1']
+keep_names = ['SERIAL_NUMBER', 'R2_FT_TEST_ITEM_NAME', 'R3_FT_TEST_ITEM_NAME']
+rename_dict = {'RESULT_DESC.1': 'RESULT_DESC'}
+
+
+s_dtype = {
+    'storetime': str,
+    'sn': str,
+    'uutname': str,
+    'wsname': str,
+    'r2testitemname': str,
+    'r3subtestitemname': str,
+    'r3result': float,
+    # 'r3resultdesc': float
+    }
+sel_names = [
+    'storetime', 'sn', 'uutname', 'wsname', 'r2testitemname',
+    'r3subtestitemname', 'r3result', 'r3resultdesc']
+keep_names = ['sn', 'r2testitemname', 'r3subtestitemname']
+rename_dict = {
+    'sn': 'SERIAL_NUMBER',
+    'r2testitemname': 'R2_FT_TEST_ITEM_NAME',
+    'r3subtestitemname': 'R3_FT_TEST_ITEM_NAME',
+    'r3resultdesc': 'RESULT_DESC',
+    'wsname': 'STATION_NAME',
+    'storetime': 'TEST_DATE',
+    'uutname': 'UUT_NAME',
+    'r3result': 'R3_RESULT'}
+
+# NOTES: the s_dtype, sel_names, rename_dict must include the same name,
+# except that there is no 'r3resultdesc' in stype (because 'r3resultdesc'
+# might be 'str' or 'float', we donot know exactly what type it is.)
+
+
+# gb_names = ['SERIAL_NUMBER', 'TEST_DATE', 'TEST_NUM', 'R3_RESULT']
+gb_names = ['SERIAL_NUMBER', 'TEST_DATE',  'UUT_NAME', 'R3_RESULT']
+# ['TEST_DATE', 'SERIAL_NUMBER', 'UUT_NAME', 'R3_RESULT']
+
+fold_cols = {'R3': ['R3_RESULT'], 'Date': ['TEST_DATE']}
+sub_docs = {'R3': 'XtableTMP', 'Date': 'XtableR3Fold'}
+# the docment-chains in 'sub_docs' work like this:
+# 'XtableTMP' -> 'XtableR3Fold' -> 'XtableDateFold'
+
+
+
