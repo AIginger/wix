@@ -1,0 +1,21 @@
+
+Created on Fri Apr 19 21:27:24 2019
+
+1. unzip wix.zip, put it into the install path of python.
+example: C:\ProgramData\Anaconda3\Lib\site-packages
+
+2. according to wix_example.py, to set proper parameters of
+from_path
+data_path
+sel_names
+s_stype
+keep_names
+rename_dict
+gb_names
+fold_cols
+sub_docs
+
+
+3. details refer to READMEmix.txt
+
+4. help(funcname) to check the parameters of the function
