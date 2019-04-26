@@ -1,0 +1,21 @@
+
+Created on Fri Apr 19 21:19:55 2019
+
+1. 将 wix.zip 文件解压，放入 python 的安装路径.
+例如: C:\ProgramData\Anaconda3\Lib\site-packages
+
+2. 按照 wix_example.py 修改参数
+from_path
+data_path
+sel_names
+s_stype
+keep_names
+rename_dict
+gb_names
+fold_cols
+sub_docs
+
+
+3. 参数的详细解释参照 READMEmix.txt
+
+4. help(funcname) to check the parameters of the function
