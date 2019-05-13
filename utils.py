@@ -327,9 +327,13 @@ def combine_itemnames_sn(data_path, ntype='nor'):
             info_path + '/*' + ntype + '*' + s + '_R3R2_ITEM_NAME.txt')
         st_set = set()
         for tname in it_list:  # tname = it_list[0]
-            df_sn = pd.read_csv(
-                tname, sep=',', header=None, encoding='gbk', engine='python')
+            # df_sn = pd.read_csv(tname, header=None, encoding='gbk', engine='python')
             # df_sn = pd.read_csv(tname, header=None, encoding='utf_8_sig')
+            try:
+                df_sn = pd.read_csv(tname, header=None, encoding='utf_8_sig')
+            except Exception as e:
+                print(e)
+                df_sn = pd.read_csv(tname, sep=',', header=None, encoding='gbk', engine='python')
             df_sn = df_sn.dropna(axis=1, how='all')  # axis=1, columns
             df_sn = df_sn.dropna(axis=0, how='any')  # axis=0, row
             # sn = fetch_SN(tname)
@@ -342,8 +346,12 @@ def combine_itemnames_sn(data_path, ntype='nor'):
         st_set = set()
         for tname in sn_list:  # tname = sn_list[0]
             # df_sn = pd.read_csv(tname, sep=',', header=None)
-            df_sn = pd.read_csv(
-                tname, sep=',', header=None, encoding='gbk', engine='python')
+            # df_sn = pd.read_csv(tname, sep=',', header=None, encoding='gbk', engine='python')
+            try:
+                df_sn = pd.read_csv(tname, header=None, encoding='utf_8_sig')
+            except Exception as e:
+                print(e)
+                df_sn = pd.read_csv(tname, sep=',', header=None, encoding='gbk', engine='python')
             df_sn = df_sn.dropna(axis=1, how='all')  # axis=1, columns
             df_sn = df_sn.dropna(axis=0, how='any')  # axis=0, row
             st_set = st_set | set(df_sn[0])  # get the fisrt column
