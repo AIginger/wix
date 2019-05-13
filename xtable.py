@@ -56,7 +56,7 @@ def extract_data_info(from_path, data_path, sel_names, s_dtype, keep_names,
 
         @log_read_file(log_name, input_file)
         def log_extract_data_info():
-            rbc.extract_bigcsv_item_info(input_file, sep=',')
+            rbc.extract_bigcsv_item_info(input_file, sep=',', encoding='utf-8')
         log_extract_data_info()
 
 
@@ -490,7 +490,7 @@ class WIXtable():
 
             @log_read_file(log_name, input_file)
             def log_extract_data_info():
-                rbc.extract_bigcsv_item_info(input_file, sep=',')
+                rbc.extract_bigcsv_item_info(input_file, sep=',', encoding='utf-8')
             log_extract_data_info()
 
     def _slim_bigcsv(self):
